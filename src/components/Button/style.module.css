@@ -1,0 +1,44 @@
+.button {
+  height: 4rem;
+  text-align: center;
+  padding: 1rem 3rem 1rem 3rem;
+  border: 0.2rem rgb(255, 255, 255) solid;
+  border-radius: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonWhite {
+  background-color: #cfd0da;
+  transition: all 0.5s;
+}
+.buttonWhite:hover {
+  background: #929496;
+  border: 0.2rem rgb(209, 219, 238) solid;
+  color: rgb(56, 47, 1);
+  transition: all 0.5s;
+}
+.buttonWhite:disabled {
+  background-color: #e2e3f2;
+  border: 0.2rem #e2e3f2 solid;
+}
+.buttonBlack {
+  color: white;
+  background-color: black;
+}
+.buttonFilling {
+  width: 90%;
+}
+.buttonBig {
+  width: 20rem;
+}
+.buttonMedium {
+  width: 15rem;
+}
+.buttonSmall{
+  width: 10rem;
+}

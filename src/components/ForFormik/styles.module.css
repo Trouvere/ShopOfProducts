@@ -1,0 +1,98 @@
+.select {
+  margin-top: 2rem;
+  max-width: 21rem;
+  padding: 1rem 5.2rem 1rem 1rem;
+  border: 0.2rem #e8f0fe solid;
+  border-radius: 1rem;
+}
+.option {
+  height: 23rem;
+}
+.textarea {
+  width: 100%;
+  height: 15rem;
+  padding: 1rem 5.2rem 1rem 1rem;
+  border: 0.2rem #e8f0fe solid;
+  border-radius: 1rem;
+  background-color: #cfd0da;
+  resize: none;
+}
+.errorMessage {
+  color: red;
+  position: absolute;
+  font-weight: bold;
+}
+.inputBlock {
+  position: relative;
+}
+.input {
+  width: 100%;
+  padding: 1rem 5.2rem 1rem 1rem;
+  border: 0.2rem #e8f0fe solid;
+  background-color: #cfd0da;
+  border-radius: 1rem;
+}
+.label {
+  top: 0;
+  position: absolute;
+  font-size: 1.2rem;
+}
+.white {
+  color: white;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+  text-transform: capitalize;
+}
+.black {
+  color: black;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+  margin-top: 1rem;
+  text-transform: capitalize;
+}
+.radio input {
+  margin: 1rem;
+}
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+.checkboxBlock {
+  width: 20rem;
+  padding: 1rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  background-color: #42a3f5;
+  font-size: 1.5rem;
+  justify-content: flex-start;
+  gap: 2rem;
+  border-radius: 1rem;
+  color: white;
+  text-transform: uppercase;
+}
+.activeCheckboxBlock {
+  width: 20rem;
+  padding: 1rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  background-color: #42f560;
+  font-size: 1.5rem;
+  justify-content: flex-start;
+  gap: 2rem;
+  border-radius: 1rem;
+  color: white;
+  text-transform: uppercase;
+}
+.checkbox {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* !!!!!!!!!!!!! */

@@ -1,0 +1,24 @@
+{
+  "invalid": {
+    "body": {
+      "accessToken": null,
+      "message": "Invalid Password!"
+    }
+  },
+  "user": {
+    "body": {
+      "id": 144,
+      "email": "user@mail.ru",
+      "role": "user",
+      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQ0LCJpYXQiOjE2MzIxNzcyMjEsImV4cCI6MTYzMjI2MzYyMX0.bygdfHWpejgYOCZCojkof5c54gNVmrPqSvRY6wHiqn8"
+    }
+  },
+  "admin": {
+    "body": {
+      "id": 144,
+      "email": "admin@mail.ru",
+      "role": "admin",
+      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQ0LCJpYXQiOjE2MzIxNzcyMjEsImV4cCI6MTYzMjI2MzYyMX0.bygdfHWpejgYOCZCojkof5c54gNVmrPqSvRY6wHiqn8"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.btnTrigger {
+  height: 4rem !important;
+  text-align: center !important;
+  padding: 1rem 3rem 1rem 3rem !important;
+  border: 0.2rem rgb(255, 255, 255) solid !important;
+  border-radius: 2rem !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  text-transform: uppercase !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #cfd0da !important;
+  transition: all 0.5s !important;
+  /* width: 15rem !important; */
+  color: rgba(0,0,0,1) !important;
+}
+.btnTrigger:hover {
+  background: #929496 !important;
+  border: 0.2rem rgb(209, 219, 238) solid !important;
+  color: rgb(56, 47, 1) !important;
+  transition: all 0.5s !important;
+}

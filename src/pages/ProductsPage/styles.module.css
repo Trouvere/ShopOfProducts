@@ -1,0 +1,30 @@
+.wrapperSearch {
+  width: 100%;
+  /* background: #f5f4f2; */
+  padding-bottom: 0.5rem;
+  position: sticky;
+  top: 0;
+  border-radius: 0 0 2rem 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 1;
+}
+.wrapperSearch h3 {
+  color: #ffab08;
+  font-size: 2.5rem;
+}
+.wrapperSearchInput {
+  width: 20rem;
+  height: 5rem;
+}
+.wrapperUsersBlock {
+  padding: 2rem;
+}
+.cardBlock {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  flex-wrap: wrap;
+}

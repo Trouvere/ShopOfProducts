@@ -1,0 +1,22 @@
+.contentWrapper {
+  width: 100%;
+  height: fit-content;
+  min-height: calc(100vh - 10rem);
+
+  max-width: 2000px;
+  margin: 0 auto;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+/* for center a Modal in Semantic-UI */
+.dimmed.dimmable > .ui.modals.dimmer.visible {
+  display: flex !important;
+}
+
+/* hide arrows number input */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
