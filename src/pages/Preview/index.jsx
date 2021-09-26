@@ -7,7 +7,7 @@ const Preview = () => {
   const isAuth = useSelector((state) => state.authData.isAuth);
   const history = useHistory();
   if (isAuth) {
-    history.push('/profile');
+    history.push('/products');
   }
   return (
     <div className={style.priview}>
