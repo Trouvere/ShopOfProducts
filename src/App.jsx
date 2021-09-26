@@ -5,6 +5,7 @@ import { Switch, BrowserRouter, Route, Redirect } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
 import ProductEditPage from './pages/ProductEditPage';
 import ProductCreatePage from './pages/ProductCreatePage';
+import Preview from './pages/Preview';
 import Footer from './pages/Footer';
 import Header from './pages/Header';
 import LoginPage from './pages/LoginPage';
@@ -36,7 +37,7 @@ function App() {
             component={ProductsPage}
           />
           <Route exact path="/login" render={() => <LoginPage />} />
-          <Route exact path="/" render={() => <Redirect to="/products" />} />
+          <Route exact path="/" render={() => <Preview />} />
           <ProtectedRoute
             isAuth={isAuth}
             exact
