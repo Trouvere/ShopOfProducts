@@ -69,7 +69,6 @@ export const {
 } = productSlice.actions;
 
 export const requestProduct = (id) => async (dispatch) => {
-  console.log('\x1b[31m%s\x1b[0m', 'agdhh');
   try {
     dispatch(getProduct('loading'));
 
@@ -82,10 +81,7 @@ export const requestProduct = (id) => async (dispatch) => {
 };
 
 export const setSpecialProduct = (data) => async (dispatch) => {
-  console.log(
-    '🚀 ~ file: ProductReducer.jsx ~ line 81 ~ setSpecialProduct ~ data',
-    data
-  );
+
   dispatch(getProduct('loading'));
   dispatch(setProductSuccess({ data }));
 };
@@ -117,10 +113,6 @@ export const editProduct =
 
 
   async (dispatch) => {
-    console.log("🚀 ~ file: ProductReducer.jsx ~ line 116 ~ id", id)
-    console.log("🚀 ~ file: ProductReducer.jsx ~ line 116 ~ data", data)
-    console.log("🚀 ~ file: ProductReducer.jsx ~ line 116 ~ isEditSpecialTab", isEditSpecialTab)
-    console.log("🚀 ~ file: ProductReducer.jsx ~ line 116 ~ allSpecialProducts", allSpecialProducts)
     try {
       dispatch(updateProduct('loading'));
       await productApi.updateProduct({ id, data });
@@ -154,7 +146,6 @@ export const removeProduct = ({id, isEditSpecialTab, allSpecialProducts}) => asy
 };
 
 export const refreshProductToInitialState = () => async (dispatch) => {
-  console.log('refreshProductToInitialState');
   dispatch(refreshProduct());
 };
 

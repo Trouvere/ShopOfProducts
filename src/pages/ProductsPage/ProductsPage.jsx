@@ -6,9 +6,11 @@ import BookCard from '../../components/BookCard';
 import { NavLink } from 'react-router-dom';
 import Switcher from './../../components/Switcher/index';
 import NavBlock from './../../components/NavComponent/index';
-// import style from './styles.module.css';
-// import Input from '../../components/Input';
+import style from './styles.module.css';
+import Input from '../../components/Input';
+import Select from '../../components/Select';
 import Button from '../../components/Button/index';
+import searchImg from '../../assets/img/icons/search.svg';
 
 import './app.css';
 
@@ -19,8 +21,19 @@ const ProductsPage = ({
   removeProductForBtn,
   isShowPublished,
   onChangeShowPublished,
-  isShowSpecialProducts
+  isShowSpecialProducts,
+  searchByTitle,
+  setSearchByTitle,
+  searchByCategory,
+  setSearchByCategory,
+  categories
 }) => {
+  const onSearchByTitleChange = (e) => {
+    setSearchByTitle(e.target.value);
+  };
+  const onSearchByCategoryChange = (e) => {
+    setSearchByCategory(e.target.value);
+  };
   let btnBlock;
   if (!isShowSpecialProducts) {
     btnBlock = (
@@ -31,7 +44,7 @@ const ProductsPage = ({
       </>
     );
   }
-  console.log('🚀 ~ file: ProductsPage.jsx ~ line 28 ~ btnBlock', btnBlock);
+
   return (
     <Container className="container">
       <div className="btn-group">
@@ -51,22 +64,30 @@ const ProductsPage = ({
           <Button size="medium">create</Button>
         </NavLink>
       </div>
-      {/* <div className={style.wrapperSearch}>
-
+      <div className={style.wrapperSearch}>
         <div className={style.wrapperSearchInput}>
           <Input
             form="oval"
-            name="searchByName"
+            name="searchByTitle"
             placeholder="Find "
-            // onChange={onSearchByNameChange}
-            value={'searchByName'}
-            // icon={searchImg}
-            id="searchByName"
+            onChange={onSearchByTitleChange}
+            value={searchByTitle}
+            icon={searchImg}
+            id="searchByTitle"
           />
         </div>
-
-
-      </div> */}
+        <div className={style.wrapperSearchInput}>
+          <Select
+            name="searchByCategory"
+            placeholder="All categories"
+            onChange={onSearchByCategoryChange}
+            value={searchByCategory}
+            icon={searchImg}
+            options={categories}
+            id="searchByLocation"
+          />
+        </div>
+      </div>
 
       <Card.Group itemsPerRow={4}>
         {productsData.map((book, i) => (

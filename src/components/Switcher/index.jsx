@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import style from './styles.module.css';
 
 
 const Switcher = ({ labelChecked, labelUnchecked, checked, onChange}) => {
  
   const textDiv= checked ?  labelChecked  :  labelUnchecked 
-  console.log("🚀 ~ file: index.jsx ~ line 4449 ~ Switcher ~ textDiv", textDiv)
 
   return (
     <div className={style.switcher}>

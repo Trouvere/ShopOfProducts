@@ -29,10 +29,6 @@ const ProductEditPage = (props) => {
   );
   const productStatus = useSelector((state) => state.productData.status);
   const product = useSelector((state) => state.productData.currentProduct);
-  console.log(
-    '🚀 ~ file: index.jsx ~ line 33 ~ ProductEditPage ~ product',
-    product
-  );
   const specialProductsData = useSelector(
     (state) => state.specialProductsData.allSpecialProducts
   );
@@ -48,7 +44,6 @@ const ProductEditPage = (props) => {
           id: productId,
           arr: specialProductsData
         });
-        console.log('🚀 ~ file: index.jsx ~ line 45 ~ useEffect ~ data', data);
         dispatch(setSpecialProduct(data));
       } else {
         dispatch(requestProduct(productId));
@@ -101,7 +96,6 @@ const ProductEditPage = (props) => {
         <DeleteModal
           text={`You definitely want to delete ${title}`}
           actionConfirmation={() => {
-            console.log(123);
             removeProductForBtn(id);
           }}
         />

@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import { productsApi } from '../../API';
+
 
 const localStorageData = JSON.parse(
   window.localStorage.getItem('SpecialProducts')
@@ -11,8 +11,7 @@ const initialStateSet = (localData) => {
   }
   return {
     allSpecialProducts: []
-    // status: 'idle',
-    // error: null
+
   };
 };
 const initialState = initialStateSet(localStorageData);
@@ -28,11 +27,11 @@ const specialProductsSlice = createSlice({
     },
     addSpecialProductsData: (state, action) => {
       const specialProduct = action.payload.specialProduct;
-      console.log("🚀 ~ file: SpecialProductsReducer.jsx ~ line 31 ~ specialProduct", specialProduct)
+
       const prevAllSpecialProducts = state.allSpecialProducts;
-      console.log("🚀 ~ file: SpecialProductsReducer.jsx ~ line 33 ~ prevAllSpecialProducts", prevAllSpecialProducts)
+
       const newAllSpecialProducts = prevAllSpecialProducts.push(specialProduct);
-      console.log("🚀 ~ file: SpecialProductsReducer.jsx ~ line 35 ~ newAllSpecialProducts", newAllSpecialProducts)
+
       state.AllSpecialProducts = newAllSpecialProducts;
     },
     resetSpecialProductsData: (state) => {

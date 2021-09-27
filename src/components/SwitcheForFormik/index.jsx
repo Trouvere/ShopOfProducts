@@ -6,7 +6,6 @@ import { useField } from 'formik';
 const SwitcheForFormik = ({ labelChecked, labelUnchecked, ...props }) => {
   const [field] = useField(props);
   const textDiv= field?.value ?  labelChecked  :  labelUnchecked 
-  console.log("🚀 ~ file: index.jsx ~ line 1119 ~ Switcher ~ textDiv", textDiv)
 
   return (
     <div className={style.switcher}>

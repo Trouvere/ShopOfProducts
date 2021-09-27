@@ -43,10 +43,6 @@ const LoginForm = ({ onAuthDataFetched }) => {
         setShowError(false);
         history.push(`/products`);
       } catch (error) {
-        console.log(
-          '🚀 ~ file: login.jsx ~ line 46 ~ onSubmit: ~ error',
-          error
-        );
         setShowError(true);
       } finally {
         setIsFetching(false);

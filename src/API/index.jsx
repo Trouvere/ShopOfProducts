@@ -42,7 +42,6 @@ export const productsApi = {
 
 export const productApi = {
   getProduct: (id) => {
-    console.log('\x1b[31m%s\x1b[0m', ';lg;knuf');
     return axios
       .get(`https://fakestoreapi.com/products/${id}`)
       .then((response) => response.data);

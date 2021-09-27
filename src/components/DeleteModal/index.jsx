@@ -23,7 +23,6 @@ const DeleteModal= ({text, actionConfirmation, actionCancel} ) => {
         <Button
           color="red"
           onClick={() => {
-            console.log('\x1b[31m%s\x1b[0m', 'red');
             setOpen(false);
             actionCancel();
           }}
@@ -33,7 +32,6 @@ const DeleteModal= ({text, actionConfirmation, actionCancel} ) => {
         <Button
           color="green"
           onClick={() => {
-            console.log('\x1b[31m%s\x1b[0m', 'green');
             setOpen(false);
 
             actionConfirmation();
