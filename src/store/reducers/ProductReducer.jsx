@@ -81,7 +81,6 @@ export const requestProduct = (id) => async (dispatch) => {
 };
 
 export const setSpecialProduct = (data) => async (dispatch) => {
-
   dispatch(getProduct('loading'));
   dispatch(setProductSuccess({ data }));
 };
@@ -110,8 +109,6 @@ export const addNewProduct =
 
 export const editProduct =
   ({ id, data, allSpecialProducts, isEditSpecialTab }) =>
-
-
   async (dispatch) => {
     try {
       dispatch(updateProduct('loading'));
@@ -129,21 +126,23 @@ export const editProduct =
     }
   };
 
-export const removeProduct = ({id, isEditSpecialTab, allSpecialProducts}) => async (dispatch) => {
-  try {
-    dispatch(deleteProduct('loading'));
-    await productApi.deleteProduct(id);
-    if (isEditSpecialTab) {
-      const newArr = deleteProductInArr({  id, arr: allSpecialProducts });
-      dispatch(setSpecialProducts(newArr));
+export const removeProduct =
+  ({ id, isEditSpecialTab, allSpecialProducts }) =>
+  async (dispatch) => {
+    try {
+      dispatch(deleteProduct('loading'));
+      await productApi.deleteProduct(id);
+      if (isEditSpecialTab) {
+        const newArr = deleteProductInArr({ id, arr: allSpecialProducts });
+        dispatch(setSpecialProducts(newArr));
+      }
+      dispatch(refreshProduct());
+      dispatch(refreshALLProductsAfterSuccessResponse());
+    } catch (error) {
+      error.clientMessage = "Can't delete product";
+      dispatch(setProductError({ error }));
     }
-    dispatch(refreshProduct());
-    dispatch(refreshALLProductsAfterSuccessResponse());
-  } catch (error) {
-    error.clientMessage = "Can't delete product";
-    dispatch(setProductError({ error }));
-  }
-};
+  };
 
 export const refreshProductToInitialState = () => async (dispatch) => {
   dispatch(refreshProduct());

@@ -1,19 +1,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Switch, BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { Switch, BrowserRouter, Route } from 'react-router-dom';
 
 import ProtectedRoute from './components/ProtectedRoute';
 import ProductEditPage from './pages/ProductEditPage';
 import ProductCreatePage from './pages/ProductCreatePage';
 import Preview from './pages/Preview';
-import Footer from './pages/Footer';
+// import Footer from './pages/Footer';
 import Header from './pages/Header';
 import LoginPage from './pages/LoginPage';
 import ProductsPage from './pages/ProductsPage';
 import ExtendedProductPage from './pages/ExtendedProductPage';
 
 import './App.css';
-
 
 function App() {
   const isAuth = useSelector((state) => state.authData.isAuth);
@@ -33,7 +32,7 @@ function App() {
             exact
             isAuth={isAuth}
             path="/productsSpecial"
-            isShowSpecialProducts={true}
+            isShowSpecialProducts
             component={ProductsPage}
           />
           <Route exact path="/login" render={() => <LoginPage />} />
@@ -58,6 +57,14 @@ function App() {
           <ProtectedRoute
             isAuth={isAuth}
             exact
+            isShowSpecialProducts
+            path="/productsSpecial/:productId"
+            component={ExtendedProductPage}
+          />
+          <ProtectedRoute
+            isAuth={isAuth}
+            exact
+            isShowSpecialProducts={false}
             path="/products/:productId"
             component={ExtendedProductPage}
           />

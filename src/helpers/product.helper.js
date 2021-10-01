@@ -9,7 +9,7 @@ export function convertNewDataToProduct({ data }) {
     data;
   const date = new Date();
   const dateStr = date.toISOString();
-  const id = parseInt(+date);
+  const id = parseInt(+date, 10);
   const newProduct = {
     id,
     title,
@@ -69,7 +69,6 @@ export function deleteProductInArr({ id, arr }) {
       return;
     }
     newArr.push(item);
-    return;
   });
 
   return newArr;
@@ -81,7 +80,7 @@ export function addNewProductInArr({ newProduct, arr }) {
   return newArr;
 }
 export function getProductById({ id, arr }) {
-  return arr.find((item) => item.id === id)
+  return arr.find((item) => item.id === id);
 }
 
 export function addNewProductInArrWithConvertData({ data, arr }) {

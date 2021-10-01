@@ -4,7 +4,15 @@ import PropTypes from 'prop-types';
 import styles from './style.module.css';
 import Preloader from '../Preloader';
 
-const Button = ({ color, children, disabled, type, isLoading,  size, onClick}) => {
+const Button = ({
+  color,
+  children,
+  disabled,
+  type,
+  isLoading,
+  size,
+  onClick
+}) => {
   return (
     <button
       className={classnames({
@@ -14,7 +22,7 @@ const Button = ({ color, children, disabled, type, isLoading,  size, onClick}) =
         [styles.buttonFilling]: size === 'filling',
         [styles.buttonBig]: size === 'big',
         [styles.buttonMedium]: size === 'medium',
-        [styles.buttonSmall]: size === 'small',
+        [styles.buttonSmall]: size === 'small'
       })}
       // eslint-disable-next-line react/button-has-type
       type={type}
@@ -32,7 +40,8 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   type: PropTypes.string,
   isLoading: PropTypes.bool,
-  size: PropTypes.string
+  size: PropTypes.string,
+  onClick: PropTypes.func
 };
 Button.defaultProps = {
   color: 'white',
@@ -40,7 +49,8 @@ Button.defaultProps = {
   disabled: false,
   type: 'button',
   isLoading: false,
-  size: 'filling'
+  size: 'filling',
+  onClick: () => {}
 };
 
 export default Button;

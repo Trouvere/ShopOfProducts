@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import style from './style.module.css';
-// import { resetAuthentication } from '../../store/reducers/AuthReducer';
+import { resetAuthentication } from '../../store/reducers/AuthReducer';
 
 const LogOutBlock = ({ email }) => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const LogOutBlock = ({ email }) => {
         type="button"
         className={style.button}
         onClick={() => {
-          // dispatch(resetAuthentication());
+          dispatch(resetAuthentication());
           history.push('/login');
         }}
       >

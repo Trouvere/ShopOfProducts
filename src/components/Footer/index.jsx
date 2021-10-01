@@ -1,6 +1,6 @@
 import React from 'react';
-import NameSiteCompanyComponent from '../../components/NameSiteCompanyComponent';
-import TopBottomBlock from '../../components/TopBottomBlock';
+import NameSiteCompanyComponent from '../NameSiteCompanyComponent';
+import TopBottomBlock from '../TopBottomBlock';
 import style from './styles.module.css';
 
 const Footer = () => {

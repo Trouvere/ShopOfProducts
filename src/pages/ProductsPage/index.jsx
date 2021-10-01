@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import {
   requestProducts,
   requestAllProducts
-} from '../../store/reducers/ProductsReducer.jsx';
-import { removeProduct } from '../../store/reducers/ProductReducer.jsx';
+} from '../../store/reducers/ProductsReducer';
+import { removeProduct } from '../../store/reducers/ProductReducer';
 import PreloaderPage from '../../components/Preloader/Page';
 import ProductsPage from './ProductsPage';
-import { setCategories } from '../../store/reducers/CategoriesReducer.jsx';
+import { setCategories } from '../../store/reducers/CategoriesReducer';
 
 const ProductsPageContainer = ({ isShowSpecialProducts }) => {
   const [isShowPublished, setShowPublished] = useState(false);
 
   const [searchByTitle, setSearchByTitle] = useState('');
-  const [searchByCategory, setSearchByCategory] = useState('');
+  const [searchByCategory, setSearchByCategory] = useState('All categories');
 
   const searchItems = (items) => {
     let filterProducts = items;
@@ -27,7 +28,10 @@ const ProductsPageContainer = ({ isShowSpecialProducts }) => {
         return false;
       });
     }
-    if (searchByCategory.length !== 0 && searchByCategory !== 'All categories') {
+    if (
+      searchByCategory.length !== 0 &&
+      searchByCategory !== 'All categories'
+    ) {
       const searchByCategoryLowerCase = searchByCategory.toLowerCase();
       filterProducts = filterProducts.filter((item) => {
         if (item.category) {
@@ -38,7 +42,6 @@ const ProductsPageContainer = ({ isShowSpecialProducts }) => {
         return false;
       });
     }
-
 
     if (isShowSpecialProducts) {
       filterProducts = isShowPublished
@@ -65,8 +68,6 @@ const ProductsPageContainer = ({ isShowSpecialProducts }) => {
     }
   }, [productsStatus]);
 
-
-  
   const { categoriesDataStatus } = useSelector((state) => ({
     categoriesDataStatus: state.categoriesData.status
   }));
@@ -80,9 +81,6 @@ const ProductsPageContainer = ({ isShowSpecialProducts }) => {
   const categories = useSelector(
     (state) => state.categoriesData.categoriesData
   );
- 
-
-
 
   const requestProductsFotBtn = (limit) => {
     dispatch(requestProducts(limit));
@@ -101,14 +99,14 @@ const ProductsPageContainer = ({ isShowSpecialProducts }) => {
       })
     );
   };
-  const onChangeShowPublished = (e) => {
+  const onChangeShowPublished = () => {
     setShowPublished(!isShowPublished);
   };
 
   if (productsStatus === 'success' && categoriesDataStatus === 'success') {
     return (
       <ProductsPage
-        productsData={searchItems(products)}
+        products={searchItems(products)}
         requestProductsFotBtn={requestProductsFotBtn}
         requestAllProductsFotBtn={requestAllProductsFotBtn}
         removeProductForBtn={removeProductForBtn}
@@ -126,6 +124,10 @@ const ProductsPageContainer = ({ isShowSpecialProducts }) => {
   }
 
   return <PreloaderPage />;
+};
+
+ProductsPageContainer.propTypes = {
+  isShowSpecialProducts: PropTypes.bool.isRequired
 };
 
 export default ProductsPageContainer;

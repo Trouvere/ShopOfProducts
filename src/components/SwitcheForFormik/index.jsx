@@ -1,43 +1,29 @@
-import React, { useState } from 'react';
-import { Button, Checkbox } from 'semantic-ui-react';
-import style from './styles.module.css';
+import React from 'react';
 import { useField } from 'formik';
+import PropTypes from 'prop-types';
+import style from './styles.module.css';
 
 const SwitcheForFormik = ({ labelChecked, labelUnchecked, ...props }) => {
   const [field] = useField(props);
-  const textDiv= field?.value ?  labelChecked  :  labelUnchecked 
+  const textDiv = field?.value ? labelChecked : labelUnchecked;
 
   return (
     <div className={style.switcher}>
       <label className={style.switch}>
         <input type="checkbox" {...field} {...props} />
-        <div></div>
+        <div />
       </label>
-      <div className={style.label}>
-        {textDiv}
-      </div>
+      <div className={style.label}>{textDiv}</div>
     </div>
   );
 };
 SwitcheForFormik.propTypes = {
-  // type: PropTypes.string,
-  // form: PropTypes.string,
-  // name: PropTypes.string,
-  // label: PropTypes.string,
-  // placeholder: PropTypes.string,
-  // onChange: PropTypes.func.isRequired,
-  // onBlur: PropTypes.func,
-  // value: PropTypes.string.isRequired,
-  // icon: PropTypes.node.isRequired,
-  // id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+  labelChecked: PropTypes.string,
+  labelUnchecked: PropTypes.string
 };
 SwitcheForFormik.defaultProps = {
-  // form: 'underlined',
-  // type: 'input',
-  // name: '',
-  // placeholder: '',
-  // onBlur: () => {},
-  // label: ''
+  labelChecked: 'Checked',
+  labelUnchecked: 'Unchecked'
 };
 
 export default SwitcheForFormik;

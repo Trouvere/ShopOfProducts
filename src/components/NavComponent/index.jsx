@@ -6,12 +6,11 @@ import style from './style.module.css';
 const NavBlock = () => {
   const isAuth = useSelector((state) => state.authData.isAuth);
   // const id = useSelector((state) => state.profileData.profile.id);
-  const id = 10;
   return (
     isAuth && (
       <nav className={style.navBlock}>
         <NavLink
-          to={`/products`}
+          to="/products"
           className={style.navLink}
           activeClassName={style.activeNav}
         >

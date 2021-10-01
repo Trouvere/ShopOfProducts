@@ -5,10 +5,10 @@ import style from './styles.module.css';
 import {
   InputForFormik,
   TextareaForFormik,
-  SelectForFormik,
+  SelectForFormik
+} from '../ForFormik';
+import SwitcheForFormik from '../SwitcheForFormik/index';
 
-} from '../../components/ForFormik';
-import SwitcheForFormik from '../../components/SwitcheForFormik/index';
 const ProductEditBlock = ({ avatar, categories }) => {
   return (
     <div className={style.productEditBlock}>
@@ -72,11 +72,9 @@ export default ProductEditBlock;
 
 ProductEditBlock.propTypes = {
   avatar: PropTypes.string,
-  rolesInCompany: PropTypes.arrayOf(PropTypes.object),
-  allLocations: PropTypes.arrayOf(PropTypes.object)
+  categories: PropTypes.arrayOf(PropTypes.string)
 };
 ProductEditBlock.defaultProps = {
   avatar: '',
-  rolesInCompany: [],
-  allLocations: []
+  categories: []
 };

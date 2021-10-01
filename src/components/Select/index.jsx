@@ -20,7 +20,7 @@ const Select = ({
         </label>
       )}
       <select name={name} id={id} onChange={onChange} value={value}>
-        <option selected>{placeholder}</option>
+        <option>{placeholder}</option>
         {options.map((el) => (
           <option key={el}>{el}</option>
         ))}

@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
-
 const localStorageData = JSON.parse(window.localStorage.getItem('authData'));
 
 const initialStateSet = (localData) => {

@@ -7,7 +7,7 @@ import Input from '../../components/Input';
 import styles from './styles.module.css';
 import Button from '../../components/Button';
 import ErrorMessage from '../../components/ErrorMessage';
-import { signUpSchemaLogin } from '../../plugins/validation';
+import { signInSchema } from '../../plugins/validation';
 import userIcon from '../../assets/img/user.svg';
 import passwordIcon from '../../assets/img/lock.svg';
 
@@ -20,7 +20,7 @@ const LoginForm = ({ onAuthDataFetched }) => {
       email: '',
       password: ''
     },
-    validationSchema: signUpSchemaLogin,
+    validationSchema: signInSchema,
     onSubmit: async (data) => {
       setIsFetching(true);
       try {
@@ -41,7 +41,7 @@ const LoginForm = ({ onAuthDataFetched }) => {
           JSON.parse(window.localStorage.getItem('authData'))
         );
         setShowError(false);
-        history.push(`/products`);
+        history.push('/products');
       } catch (error) {
         setShowError(true);
       } finally {
@@ -114,7 +114,6 @@ const LoginForm = ({ onAuthDataFetched }) => {
 };
 
 LoginForm.propTypes = {
-  onSignUpButtonClick: PropTypes.func.isRequired,
   onAuthDataFetched: PropTypes.func.isRequired
 };
 

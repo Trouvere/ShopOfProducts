@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Card, Image, Icon } from 'semantic-ui-react';
@@ -27,9 +28,17 @@ const BookCard = (book) => {
           {price}
         </a>
       </Card.Content>
-      <NavLink to={`/products/${id}`}>
-        <Button>View</Button>
-      </NavLink>
+
+      {isShowSpecialProducts && (
+        <NavLink to={`/productsSpecial/${id}`}>
+          <Button>View</Button>
+        </NavLink>
+      )}
+      {!isShowSpecialProducts && (
+        <NavLink to={`/products/${id}`}>
+          <Button>View</Button>
+        </NavLink>
+      )}
       {isShowSpecialProducts && (
         <NavLink to={`/editSpecial/${id}`}>
           <Button>Edit</Button>

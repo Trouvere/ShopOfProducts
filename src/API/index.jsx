@@ -1,10 +1,6 @@
 import * as axios from 'axios';
 
 export const authenticationApi = {
-  signUp: ({ email, password }) => {
-    if (email === password)
-      return axios.get('/login.json').then((response) => response.data);
-  },
   singIn: ({ email, password }) => {
     if (email === password && email === 'admin@mail.ru') {
       return axios
@@ -15,9 +11,8 @@ export const authenticationApi = {
       return axios
         .get('/login.json')
         .then((response) => response.data.users.user.body);
-    } else {
-      return axios.get('/none.json').then((response) => response);
     }
+    return axios.get('/none.json').then((response) => response);
   }
 };
 
@@ -29,7 +24,7 @@ export const productsApi = {
   },
   getAllProducts: () => {
     return axios
-      .get(`https://fakestoreapi.com/products`)
+      .get('https://fakestoreapi.com/products')
       .then((response) => response.data);
   },
   updateUser: (data) => {

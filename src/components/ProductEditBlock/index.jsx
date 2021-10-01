@@ -1,26 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Form, Formik } from 'formik';
 import style from './styles.module.css';
 import {
   editProduct,
   addNewProduct
 } from '../../store/reducers/ProductReducer';
-import { Form, Formik } from 'formik';
 import { inputForFromikValidation } from '../../plugins/validation';
 import ProductEditBlock from './ProductEditBlock';
 
 const ProductEditBlockContainer = ({
   categories,
   product,
-    pageDesignation
+  pageDesignation
 }) => {
-
   const history = useHistory();
   const dispatch = useDispatch();
-  const allSpecialProducts = useSelector((state) => state.specialProductsData.allSpecialProducts);
-  const { id, title, price, image, description, rating, category, published } = product;
+  const allSpecialProducts = useSelector(
+    (state) => state.specialProductsData.allSpecialProducts
+  );
+  const { id, title, price, image, description, rating, category, published } =
+    product;
 
   const { count, rate } = rating;
   return (
@@ -34,7 +36,7 @@ const ProductEditBlockContainer = ({
           description: description || '',
           count: count || 0,
           rate: rate || 0,
-          published: published|| false,
+          published: published || false,
           category: category || categories[0]
         }}
         validationSchema={inputForFromikValidation}
@@ -48,7 +50,7 @@ const ProductEditBlockContainer = ({
               editProduct({ id, data, allSpecialProducts, isEditSpecialTab })
             );
           }
-          history.push(`/products`);
+          history.push('/products');
         }}
       >
         {() => (
@@ -65,6 +67,28 @@ const ProductEditBlockContainer = ({
       </Formik>
     </>
   );
+};
+
+ProductEditBlockContainer.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.string),
+  product: PropTypes.PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    price: PropTypes.number,
+    image: PropTypes.string,
+    description: PropTypes.string,
+    rating: PropTypes.shape({
+      count: PropTypes.number,
+      rate: PropTypes.number
+    }),
+    category: PropTypes.string,
+    published: PropTypes.bool
+  }).isRequired,
+  pageDesignation: PropTypes.string
+};
+ProductEditBlockContainer.defaultProps = {
+  categories: [],
+  pageDesignation: ''
 };
 
 export default ProductEditBlockContainer;

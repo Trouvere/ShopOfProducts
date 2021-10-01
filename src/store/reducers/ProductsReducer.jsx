@@ -26,12 +26,16 @@ const productsSlice = createSlice({
     refreshALLProductsAfterSuccessResponse: (state) => {
       state.allProducts = initialState.allProducts;
       state.status = 'idle';
-    },
+    }
   }
 });
 
-export const { setProductsError, setProductsSuccess, setProductsStatus, refreshALLProductsAfterSuccessResponse } =
-  productsSlice.actions;
+export const {
+  setProductsError,
+  setProductsSuccess,
+  setProductsStatus,
+  refreshALLProductsAfterSuccessResponse
+} = productsSlice.actions;
 
 export const requestProducts =
   (limit = 8) =>
@@ -46,17 +50,15 @@ export const requestProducts =
     }
   };
 
-  export const requestAllProducts =
-  () =>
-  async (dispatch) => {
-    try {
-      dispatch(setProductsStatus('loading'));
-      const data = await productsApi.getAllProducts();
-      dispatch(setProductsSuccess({ data }));
-    } catch (error) {
-      error.clientMessage = "Can't get products";
-      dispatch(setProductsError({ error }));
-    }
-  };
+export const requestAllProducts = () => async (dispatch) => {
+  try {
+    dispatch(setProductsStatus('loading'));
+    const data = await productsApi.getAllProducts();
+    dispatch(setProductsSuccess({ data }));
+  } catch (error) {
+    error.clientMessage = "Can't get products";
+    dispatch(setProductsError({ error }));
+  }
+};
 
 export default productsSlice.reducer;

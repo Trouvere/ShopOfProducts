@@ -3,7 +3,7 @@ import { Button, Header, Icon, Modal } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import style from './styles.module.css';
 
-const DeleteModal= ({text, actionConfirmation, actionCancel} ) => {
+const DeleteModal = ({ text, actionConfirmation, actionCancel }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -15,10 +15,7 @@ const DeleteModal= ({text, actionConfirmation, actionCancel} ) => {
       onOpen={() => setOpen(true)}
       style={{ margin: 'auto', position: 'fixed' }}
     >
-      <Header
-        style={{ textAlign: 'center ' }}
-        content={text}
-      />
+      <Header style={{ textAlign: 'center ' }} content={text} />
       <Modal.Actions>
         <Button
           color="red"
@@ -27,7 +24,8 @@ const DeleteModal= ({text, actionConfirmation, actionCancel} ) => {
             actionCancel();
           }}
         >
-          <Icon name="remove" /> No
+          <Icon name="remove" />
+          No
         </Button>
         <Button
           color="green"
@@ -37,20 +35,21 @@ const DeleteModal= ({text, actionConfirmation, actionCancel} ) => {
             actionConfirmation();
           }}
         >
-          <Icon name="checkmark" /> Yes
+          <Icon name="checkmark" />
+          Yes
         </Button>
       </Modal.Actions>
     </Modal>
   );
-}
+};
 DeleteModal.propTypes = {
   text: PropTypes.string.isRequired,
-  label: PropTypes.func,
-  colorLabel: PropTypes.func,
+  actionConfirmation: PropTypes.func,
+  actionCancel: PropTypes.func
 };
 DeleteModal.defaultProps = {
   actionConfirmation: () => {},
-  actionCancel: () => {},
+  actionCancel: () => {}
 };
 
 export default DeleteModal;

@@ -1,11 +1,11 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+import { useHistory, NavLink } from 'react-router-dom';
 
 import ProductEditBlockContainer from '../../components/ProductEditBlock/index';
-import { setCategories } from '../../store/reducers/CategoriesReducer.jsx';
+import { setCategories } from '../../store/reducers/CategoriesReducer';
 import DeleteModal from '../../components/DeleteModal';
 
 import Button from '../../components/Button/index';
@@ -15,11 +15,11 @@ import {
   setSpecialProduct
 } from '../../store/reducers/ProductReducer';
 import PreloaderPage from '../../components/Preloader/Page/index';
-import { getProductById } from './../../helpers/product.helper';
+import { getProductById } from '../../helpers/product.helper';
 
 import style from './styles.module.css';
 
-const ProductEditPage = (props) => {
+const ProductEditPage = () => {
   const isEditSpecialTab = window.location.href.includes('editSpecial');
   const history = useHistory();
   const dispatch = useDispatch();
@@ -71,7 +71,7 @@ const ProductEditPage = (props) => {
         allSpecialProducts: specialProductsData
       })
     );
-    history.push(`/products`);
+    history.push('/products');
   };
 
   const categories = useSelector(
@@ -87,10 +87,10 @@ const ProductEditPage = (props) => {
       <ProductEditBlockContainer
         product={product}
         categories={categories}
-        pageDesignation={'Edit product'}
+        pageDesignation="Edit product"
       />
       <div className={style.btnBlockWrapper}>
-        <NavLink to={`/products`}>
+        <NavLink to="/products">
           <Button size="medium">All proucts</Button>
         </NavLink>
         <DeleteModal

@@ -1,12 +1,27 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Container, Card, Image, Icon, Button } from 'semantic-ui-react';
-import { Grid, Header, Segment, Rating } from 'semantic-ui-react';
-import { useDispatch, useSelector } from 'react-redux';
-import { requestProduct } from '../../store/reducers/ProductReducer.jsx';
-import PreloaderPage from '../../components/Preloader/Page/index';
+import {
+  Container,
+  Image,
+  Icon,
+  Button,
+  Grid,
+  Header,
+  Segment,
+  Rating
+} from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
-const ExtendedProductPage = (props) => {
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  requestProduct,
+  setSpecialProduct
+} from '../../store/reducers/ProductReducer';
+import PreloaderPage from '../../components/Preloader/Page/index';
+import { getProductById } from '../../helpers/product.helper';
+
+const ExtendedProductPage = ({ isShowSpecialProducts }) => {
   const dispatch = useDispatch();
 
   const productId = Number(
@@ -16,6 +31,9 @@ const ExtendedProductPage = (props) => {
   const productStatus = useSelector((state) => state.productData.status);
 
   const product = useSelector((state) => state.productData.currentProduct);
+  const specialProductsData = useSelector(
+    (state) => state.specialProductsData.allSpecialProducts
+  );
 
   const { id, title, price, image, description, rating, category } = product;
 
@@ -26,12 +44,20 @@ const ExtendedProductPage = (props) => {
       productStatus === 'idle' ||
       (productStatus === 'success' && id !== productId)
     ) {
-      dispatch(requestProduct(productId));
+      if (isShowSpecialProducts) {
+        const data = getProductById({
+          id: productId,
+          arr: specialProductsData
+        });
+        dispatch(setSpecialProduct(data));
+      } else {
+        dispatch(requestProduct(productId));
+      }
     }
-  }, [productStatus, id, productId]);
+  }, [productStatus, id, productId, isShowSpecialProducts]);
 
   if (productStatus !== 'success') {
-    return <PreloaderPage/>;
+    return <PreloaderPage />;
   }
   return (
     <Container className="container">
@@ -51,7 +77,8 @@ const ExtendedProductPage = (props) => {
                 <Rating defaultRating={rate} maxRating={5} disabled />
                 <a>
                   <Icon name="user" />
-                  {count} feedbacks
+                  {count}
+                  feedbacks
                 </a>
               </div>
               <p>
@@ -64,7 +91,7 @@ const ExtendedProductPage = (props) => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column textAlign="center">
-              <NavLink to={`/products`}>
+              <NavLink to="/products">
                 <Button size="huge">All proucts</Button>
               </NavLink>
             </Grid.Column>
@@ -73,6 +100,13 @@ const ExtendedProductPage = (props) => {
       </Segment>
     </Container>
   );
+};
+
+ExtendedProductPage.propTypes = {
+  isShowSpecialProducts: PropTypes.bool
+};
+ExtendedProductPage.defaultProps = {
+  isShowSpecialProducts: false
 };
 
 export default ExtendedProductPage;

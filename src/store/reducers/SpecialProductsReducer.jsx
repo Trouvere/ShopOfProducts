@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
-
 const localStorageData = JSON.parse(
   window.localStorage.getItem('SpecialProducts')
 );
@@ -11,7 +10,6 @@ const initialStateSet = (localData) => {
   }
   return {
     allSpecialProducts: []
-
   };
 };
 const initialState = initialStateSet(localStorageData);
@@ -26,7 +24,7 @@ const specialProductsSlice = createSlice({
       state.allSpecialProducts = action.payload.allSpecialProducts;
     },
     addSpecialProductsData: (state, action) => {
-      const specialProduct = action.payload.specialProduct;
+      const { specialProduct } = action.payload;
 
       const prevAllSpecialProducts = state.allSpecialProducts;
 
@@ -40,15 +38,18 @@ const specialProductsSlice = createSlice({
   }
 });
 
-export const {addSpecialProductsData, setSpecialProductsData, resetSpecialProductsData } =
-  specialProductsSlice.actions;
+export const {
+  addSpecialProductsData,
+  setSpecialProductsData,
+  resetSpecialProductsData
+} = specialProductsSlice.actions;
 
 export const setSpecialProducts = (allSpecialProducts) => async (dispatch) => {
   dispatch(setSpecialProductsData({ allSpecialProducts }));
   await window.localStorage.setItem(
     'SpecialProducts',
     JSON.stringify({
-      allSpecialProducts: allSpecialProducts
+      allSpecialProducts
     })
   );
 };

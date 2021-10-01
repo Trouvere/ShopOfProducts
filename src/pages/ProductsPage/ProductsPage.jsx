@@ -1,11 +1,11 @@
 import React from 'react';
 import { Card, Container } from 'semantic-ui-react';
-
+import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import BookCard from '../../components/BookCard';
 
-import { NavLink } from 'react-router-dom';
-import Switcher from './../../components/Switcher/index';
-import NavBlock from './../../components/NavComponent/index';
+import Switcher from '../../components/Switcher/index';
+import NavBlock from '../../components/NavComponent/index';
 import style from './styles.module.css';
 import Input from '../../components/Input';
 import Select from '../../components/Select';
@@ -15,7 +15,7 @@ import searchImg from '../../assets/img/icons/search.svg';
 import './app.css';
 
 const ProductsPage = ({
-  productsData,
+  products,
   requestProductsFotBtn,
   requestAllProductsFotBtn,
   removeProductForBtn,
@@ -60,7 +60,7 @@ const ProductsPage = ({
       <div className="btn-group">
         {btnBlock}
 
-        <NavLink to={`/products/create`}>
+        <NavLink to="/products/create">
           <Button size="medium">create</Button>
         </NavLink>
       </div>
@@ -90,9 +90,9 @@ const ProductsPage = ({
       </div>
 
       <Card.Group itemsPerRow={4}>
-        {productsData.map((book, i) => (
+        {products.map((book) => (
           <BookCard
-            key={i}
+            key={book.title}
             removeProductForBtn={removeProductForBtn}
             isShowSpecialProducts={isShowSpecialProducts}
             {...book}
@@ -103,4 +103,44 @@ const ProductsPage = ({
   );
 };
 
+ProductsPage.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      price: PropTypes.number,
+      image: PropTypes.string,
+      description: PropTypes.string,
+      rating: PropTypes.shape({
+        count: PropTypes.number,
+        rate: PropTypes.number
+      }),
+      category: PropTypes.string,
+      published: PropTypes.bool
+    })
+  ).isRequired,
+  requestProductsFotBtn: PropTypes.func,
+  requestAllProductsFotBtn: PropTypes.func,
+  removeProductForBtn: PropTypes.func,
+  isShowPublished: PropTypes.bool.isRequired,
+  onChangeShowPublished: PropTypes.func,
+  isShowSpecialProducts: PropTypes.bool.isRequired,
+  searchByTitle: PropTypes.string,
+  setSearchByTitle: PropTypes.func,
+  searchByCategory: PropTypes.string,
+  setSearchByCategory: PropTypes.func,
+  categories: PropTypes.arrayOf(PropTypes.string)
+};
+
+ProductsPage.defaultProps = {
+  categories: [],
+  requestProductsFotBtn: () => {},
+  requestAllProductsFotBtn: () => {},
+  removeProductForBtn: () => {},
+  onChangeShowPublished: () => {},
+  searchByTitle: '',
+  setSearchByTitle: () => {},
+  searchByCategory: '',
+  setSearchByCategory: () => {}
+};
 export default ProductsPage;

@@ -92,28 +92,6 @@ export const SelectForFormik = ({ options, label, colorLabel, ...props }) => {
   );
 };
 
-export const SwitchForFormik = ({ id, interest, ...props }) => {
-  const [field] = useField(props);
-  return (
-    <label
-      className={
-        field.value.some((idI) => idI === id)
-          ? styles.activeCheckboxBlock
-          : styles.checkboxBlock
-      }
-    >
-      <input
-        className={styles.checkbox}
-        type="checkbox"
-        {...field}
-        {...props}
-        checked={field.value.some((idI) => idI === id)}
-      />
-      <p>{interest.name}</p>
-    </label>
-  );
-};
-
 export const CheckboxForFormik = ({ id, interest, ...props }) => {
   const [field] = useField(props);
   return (
@@ -170,7 +148,9 @@ TextareaForFormik.defaultProps = {
 
 SelectForFormik.propTypes = {
   label: PropTypes.string,
-  options: PropTypes.arrayOf(PropTypes.object).isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.object, PropTypes.string])
+  ).isRequired,
   colorLabel: PropTypes.oneOf(['white', 'black'])
 };
 SelectForFormik.defaultProps = {

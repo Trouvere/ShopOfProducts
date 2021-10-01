@@ -2,11 +2,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-
-
-
-import { setCategories } from '../../store/reducers/CategoriesReducer.jsx';
 import { NavLink } from 'react-router-dom';
+import { setCategories } from '../../store/reducers/CategoriesReducer';
 import Button from '../../components/Button/index';
 import { refreshProductToInitialState } from '../../store/reducers/ProductReducer';
 import PreloaderPage from '../../components/Preloader/Page/index';
@@ -37,7 +34,6 @@ const ProductCreatePage = () => {
     }
   }, [categoriesDataStatus]);
 
-
   const categories = useSelector(
     (state) => state.categoriesData.categoriesData
   );
@@ -51,10 +47,10 @@ const ProductCreatePage = () => {
       <ProductEditBlockContainer
         product={product}
         categories={categories}
-        pageDesignation={'Create new product'}
+        pageDesignation="Create new product"
       />
       <div className={style.btnBlockWrapper}>
-        <NavLink to={`/products`}>
+        <NavLink to="/products">
           <Button size="medium">All proucts</Button>
         </NavLink>
       </div>

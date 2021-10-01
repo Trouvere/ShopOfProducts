@@ -1,9 +1,9 @@
 {
-  "(*test).js": [
+  "!(*test).js": [
     "npm run prettier",
     "npm run lint"
   ], 
-  "(*test).css": [
+  "!(*test).css": [
     "npm run prettier",
     "npm run stylelint"        
   ]    
